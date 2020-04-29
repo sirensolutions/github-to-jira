@@ -60,7 +60,13 @@ issues.each do |issue|
     "issueType" => "Task",
     "description" => reformat(issue.body),
     "labels" => issue.labels.collect { |l| l.name },
-    "comments" => []
+    "comments" => [
+      {
+	"body" => "Migrated from https://github.com/#{org}/#{reponame}/issues/#{issue.number}",
+        "author" => issue.user.login,
+	"created" => jira_date(issue.created_at)
+      }
+    ]
   }
   unless issue.assignee.nil?
     issue_jira["assignee"] = issue.assignee.login
