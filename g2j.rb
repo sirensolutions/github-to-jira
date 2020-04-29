@@ -63,7 +63,6 @@ issues.each do |issue|
     "comments" => [
       {
 	"body" => "Migrated from https://github.com/#{org}/#{reponame}/issues/#{issue.number}",
-        "author" => issue.user.login,
 	"created" => jira_date(issue.created_at)
       }
     ]
